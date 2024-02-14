@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vday 24</title>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <div class="page">
+        <div class="container">
+            <div class="heart" id="heartButton"></div>
+            <div id="message" class="message">
+                hi nerd
+            </div>
+            <div id="banner" class="banner">
+                thanks for making it this far
+            </div>
+            <div id="note" class="note"></div>
+            <button id="nextButton" class="next">next -></button>
+            <div id="activities" class="activities">
+              <div class="text-container">
+              so much to do...
+              <br><br><br><br><br>
+              <a href="https://www.cosmopolitan.com/uk/worklife/a32313763/truth-or-dare-questions/" target="_blank">truth or dare?</a>
+              <br><br><br>
+              <a href="https://skribbl.io/" target="_blank">skribbl.io</a>
+              <br><br><br>
+              <a href="https://www.funtrivia.com/" target="_blank">trivia!</a>
+              <br><br><br>
+              <a href="https://open.spotify.com/?" target="_blank">make spotify playlists?</a>
+              <br><br><br>
+              <a href="https://www.nytimes.com/crosswords" target="_blank">nyt games</a>
+              <br><br><br>
+              <a href="https://www.netflix.com/" target="_blank">movie</a>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("heartButton").onclick = function() {showBanner()};
+        
+        function showBanner() {
+          document.getElementById("banner").style.display = 'block';
+          document.getElementById("note").style.display = 'block';
+          setTimeout(1000)
+          typeWriter()
+        }
+
+        var i = 0;
+        var txt = 'you are cool!sorry for almost getting you sick!here is a haiku!..met at a party.then we went climbing, and the.rest is history'
+        
+        var speed = 125;
+
+        function typeWriter() {
+          if (i < txt.length) {
+            if (txt.charAt(i) !== ".") {
+              document.getElementById("note").innerHTML += txt.charAt(i);
+            }
+            if (txt.charAt(i) === "!" || txt.charAt(i) === ".") {
+              document.getElementById("note").innerHTML += '<br>'
+            }
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+
+          if (i === txt.length) {
+            setTimeout(500)
+            document.getElementById("nextButton").style.display = 'block';
+          } 
+        }
+
+        document.getElementById("nextButton").onclick = function() {showActivities()};
+
+        function showActivities() {
+          // clear out old stuff
+          document.getElementById("message").style.display = 'none';
+          document.getElementById("heartButton").style.display = 'none';
+          document.getElementById("note").style.display = 'none';
+          document.getElementById("nextButton").style.display = 'none';
+          document.getElementById("banner").style.display = 'none';
+          // add new stuff
+          setTimeout(1000)
+          document.getElementById("activities").style.display = 'block';
+        }
+      </script>
+  </body>
+</html> 
